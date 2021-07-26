@@ -8,8 +8,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-public interface PatientRepo extends MongoRepository<Patient, Long> {
+public interface PatientRepo extends MongoRepository<Patient, String> {
 
-    public List<Patient> findPatientsByTurnsDay(LocalDate date);
+    public Patient findByIdPatient(String id);
 
 }

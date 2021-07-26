@@ -1,11 +1,14 @@
 package com.meli.demo.service;
 
+import com.meli.demo.domain.Dentist;
+import com.meli.demo.domain.Patient;
 import com.meli.demo.domain.Turn;
+import com.meli.demo.dto.GenericResponseDto;
+import com.meli.demo.payload.TurnPayload;
 import com.meli.demo.repository.TurnRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -18,38 +21,24 @@ public class TurnService {
         this.repository = repository;
     }
 
-    public void saveTurn(Turn turn){
-        repository.save(turn);
+    public Turn saveTurn(TurnPayload turn, Dentist d, Patient p){
+
+        Turn t = new Turn(turn.getDate(),d,p);
+
+        return repository.save(t);
     }
 
-    public void deleteTurn(Long id){
+    public GenericResponseDto deleteTurn(String id){
         repository.deleteById(id);
+        return new GenericResponseDto("Deletado com sucesso.");
     }
 
     public List<Turn> getAll(){
         return repository.findAll();
     }
 
-    public List<Turn> getFinalizedTurns(){
-        return repository.findTurnsByTurnStatusNameEquals("CONCLUIDO");
-    }
-
-    public List<Turn> getOneDayPendentTurns(){
-        return repository.findTurnsByDayBeforeAndTurnStatusNameEquals(LocalDate.now(),"PENDENTE");
-    }
-
-    public Turn getById(Long id){
+    public Turn getById(String id){
         return repository.findById(id).orElse(null);
-    }
-
-    public List<Turn> getAllReprogrammed(){
-        //return repository.findReprogrammedTurns();
-        return repository.findAll();
-    }
-
-    public List<Turn> getAllReprogrammedByDentist(Long id){
-        // return repository.findReprogrammedTurnsByDentist(id);
-        return repository.findAll();
     }
 
 }
