@@ -1,14 +1,14 @@
 package com.meli.demo.repository;
 
-import com.meli.demo.entity.Dentist;
-import com.meli.demo.entity.Diary;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.meli.demo.domain.Dentist;
+import com.meli.demo.domain.Diary;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface DiaryRepo extends JpaRepository<Diary, Long> {
+public interface DiaryRepo extends MongoRepository<Diary, Long> {
 
     public List<Diary> findDiariesByDentist(Dentist d);
 

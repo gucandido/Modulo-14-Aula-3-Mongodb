@@ -1,6 +1,6 @@
 package com.meli.demo.service;
 
-import com.meli.demo.entity.Patient;
+import com.meli.demo.domain.Patient;
 import com.meli.demo.repository.PatientRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

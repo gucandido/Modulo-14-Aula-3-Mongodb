@@ -1,8 +1,9 @@
 package com.meli.demo.repository;
 
-import com.meli.demo.entity.Turn;
+import com.meli.demo.domain.Turn;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -10,13 +11,13 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-public interface TurnRepo extends JpaRepository<Turn, Long> {
+public interface TurnRepo extends MongoRepository<Turn, Long> {
 
     public List<Turn> findTurnsByTurnStatusNameEquals(String status);
 
     public List<Turn> findTurnsByDayBeforeAndTurnStatusNameEquals(LocalDate yesterday, String status);
 
-    @Query("select t " +
+    /*@Query("select t " +
             "from Turn t join Turn tr on t.reprogramedTurn.idTurn = tr.idTurn "+
             "order by t.day")
     public List<Turn> findReprogrammedTurns();
@@ -26,6 +27,6 @@ public interface TurnRepo extends JpaRepository<Turn, Long> {
                         "join Diary d on t.diary.id_diary = d.id_diary " +
             "where d.dentist.idDentist = :idDentist " +
             "order by t.day")
-    public List<Turn> findReprogrammedTurnsByDentist(@Param("idDentist") Long idDentist);
+    public List<Turn> findReprogrammedTurnsByDentist(@Param("idDentist") Long idDentist);*/
 
 }

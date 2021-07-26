@@ -1,6 +1,6 @@
 package com.meli.demo.service;
 
-import com.meli.demo.entity.TurnStatus;
+import com.meli.demo.domain.TurnStatus;
 import com.meli.demo.repository.TurnStatusRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

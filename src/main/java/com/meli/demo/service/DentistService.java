@@ -1,6 +1,6 @@
 package com.meli.demo.service;
 
-import com.meli.demo.entity.Dentist;
+import com.meli.demo.domain.Dentist;
 import com.meli.demo.repository.DentistRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +31,8 @@ public class DentistService {
     }
 
     public List<Dentist> getAllByDayHavingTwoMore(LocalDate day){
-        return repository.findDentistsByTurnsDayHavingTwoMore(day);
+        //return repository.findDentistsByTurnsDayHavingTwoMore(day);
+        return repository.findAll();
     }
 
     public Dentist getDentistById(Long id){

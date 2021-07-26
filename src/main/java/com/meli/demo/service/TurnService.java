@@ -1,6 +1,6 @@
 package com.meli.demo.service;
 
-import com.meli.demo.entity.Turn;
+import com.meli.demo.domain.Turn;
 import com.meli.demo.repository.TurnRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,11 +43,13 @@ public class TurnService {
     }
 
     public List<Turn> getAllReprogrammed(){
-        return repository.findReprogrammedTurns();
+        //return repository.findReprogrammedTurns();
+        return repository.findAll();
     }
 
     public List<Turn> getAllReprogrammedByDentist(Long id){
-        return repository.findReprogrammedTurnsByDentist(id);
+        // return repository.findReprogrammedTurnsByDentist(id);
+        return repository.findAll();
     }
 
 }

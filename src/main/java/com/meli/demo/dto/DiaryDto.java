@@ -1,6 +1,6 @@
 package com.meli.demo.dto;
 
-import com.meli.demo.entity.Diary;
+import com.meli.demo.domain.Diary;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
