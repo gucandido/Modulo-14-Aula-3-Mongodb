@@ -1,7 +1,7 @@
 package com.meli.demo.service;
 
-import com.meli.demo.entity.Dentist;
-import com.meli.demo.entity.Diary;
+import com.meli.demo.domain.Dentist;
+import com.meli.demo.domain.Diary;
 import com.meli.demo.repository.DiaryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

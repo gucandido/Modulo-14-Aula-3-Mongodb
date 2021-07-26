@@ -4,9 +4,8 @@ import com.meli.demo.dto.DentistDto;
 import com.meli.demo.dto.DiaryDto;
 import com.meli.demo.dto.PatientDto;
 import com.meli.demo.dto.TurnDto;
-import com.meli.demo.entity.*;
+import com.meli.demo.domain.*;
 import com.meli.demo.service.*;
-import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -146,7 +145,7 @@ public class AppController {
     }
 
     // remarca uma consulta
-    @PostMapping("turns/reprogram/{idPatient}/{idTurn}")
+    /*@PostMapping("turns/reprogram/{idPatient}/{idTurn}")
     public ResponseEntity<?> postReprogramTurn(@PathVariable Long idPatient,@PathVariable Long idTurn, @RequestBody String date){
 
         Turn trOld = turnService.getById(idTurn);
@@ -163,15 +162,14 @@ public class AppController {
 
         return new ResponseEntity<>("ok", HttpStatus.CREATED);
 
-    }
+    }*/
 
     // inicializa o banco de dados com os dados para os testes
     @PostMapping("post")
     public ResponseEntity<?> postDatabaseInit(){
 
-        System.out.println("database init");
+        /*System.out.println("database init");
 
-        /* criacao dos dentistas */
         Dentist d1 = new Dentist("Francisco","Tiradentes","Minas Gerais","oshee",LocalDate.of(1892, Month.APRIL, 14),"+553598787521","","A123456a");
         Dentist d2 = new Dentist("Celso","Rodriguez","São Caetano do Sul","oshee",LocalDate.of(1992, Month.AUGUST, 5),"+551696887421","celso.coringao@hotmail.com","B123456b");
 
@@ -180,7 +178,6 @@ public class AppController {
 
         System.out.println("database - dentist");
 
-        /* criacao dos pacientes */
         Patient p1 = new Patient("Joao","Ghordo", "Pirapitingui - SP", "oshee", LocalDate.of(1994, Month.AUGUST, 5), "+551598857431","jao.gordasso@gmail.com");
         Patient p2 = new Patient("Felipe","Farias", "Caetité - BA", "oshee", LocalDate.of(1994, Month.SEPTEMBER, 5), "+556998857431","f.farias@outlook.com");
         Patient p3 = new Patient("Beatriz","Knusty", "Criciúma - SC", "oshee", LocalDate.of(1995, Month.JULY, 5), "+554898857431","bia_htinha15@hotmail.com");
@@ -193,7 +190,6 @@ public class AppController {
 
         System.out.println("database - patient");
 
-        /* criacao dos status de turno */
         TurnStatus t1 = new TurnStatus("CONCLUIDO","Concluído");
         TurnStatus t2 = new TurnStatus("CANCELADO","Cancelado");
         TurnStatus t3 = new TurnStatus("PENDENTE","Pendente");
@@ -248,7 +244,7 @@ public class AppController {
         turnService.saveTurn(tr1_p4);
         turnService.saveTurn(tr2_p4);
         turnService.saveTurn(tr3_p4);
-        turnService.saveTurn(tr4_p4);
+        turnService.saveTurn(tr4_p4);*/
 
         return new ResponseEntity<>("ok", HttpStatus.CREATED);
 

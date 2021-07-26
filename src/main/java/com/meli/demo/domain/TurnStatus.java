@@ -1,21 +1,22 @@
-package com.meli.demo.entity;
+package com.meli.demo.domain;
+
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Table(name = "turn_status")
+@Document(collection = "turnStatus")
 public class TurnStatus {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_turn_status;
+    private String idTurnStatus;
 
     private String name;
 
     private String description;
 
-    @OneToMany(mappedBy = "turnStatus")
+    @DBRef
     private List<Turn> turns;
 
     public TurnStatus() {
@@ -26,12 +27,12 @@ public class TurnStatus {
         this.description = description;
     }
 
-    public Long getId_turn_status() {
-        return id_turn_status;
+    public String getIdTurnStatus() {
+        return idTurnStatus;
     }
 
-    public void setId_turn_status(Long id_turn_status) {
-        this.id_turn_status = id_turn_status;
+    public void setIdTurnStatus(String idTurnStatus) {
+        this.idTurnStatus = idTurnStatus;
     }
 
     public String getName() {
@@ -50,9 +51,9 @@ public class TurnStatus {
         this.description = description;
     }
 
-    /*public List<Turn> getTurns() {
+    public List<Turn> getTurns() {
         return turns;
-    }*/
+    }
 
     public void setTurns(List<Turn> turns) {
         this.turns = turns;

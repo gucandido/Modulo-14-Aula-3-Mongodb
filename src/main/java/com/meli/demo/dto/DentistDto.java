@@ -1,6 +1,6 @@
 package com.meli.demo.dto;
 
-import com.meli.demo.entity.Dentist;
+import com.meli.demo.domain.Dentist;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;

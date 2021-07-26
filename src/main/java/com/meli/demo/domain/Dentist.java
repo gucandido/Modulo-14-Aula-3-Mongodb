@@ -1,58 +1,54 @@
-package com.meli.demo.entity;
+package com.meli.demo.domain;
+
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@Entity
-@Table(name = "dentist")
+@Document(collection = "dentist")
 public class Dentist {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_dentist")
-    private Long idDentist;
+    private String idDentist;
 
     private String name;
 
-    private String last_name;
+    private String lastName;
 
     private String address;
 
     private String dni;
 
-    private LocalDate birth_date;
+    private LocalDate birthDate;
 
     private String phone;
 
     private String email;
 
-    private String code_mp;
+    private String codeMp;
 
-    @OneToMany(mappedBy = "dentist")
+    @DBRef
     private List<Diary> diarys;
 
-    public Dentist() {
-
-    }
-
-    public Dentist(String name, String last_name, String address, String dni, LocalDate birth_date, String phone, String email, String code_mp) {
+    public Dentist(String name, String lastName, String address, String dni, LocalDate birthDate, String phone, String email, String codeMp) {
         this.name = name;
-        this.last_name = last_name;
+        this.lastName = lastName;
         this.address = address;
         this.dni = dni;
-        this.birth_date = birth_date;
+        this.birthDate = birthDate;
         this.phone = phone;
         this.email = email;
-        this.code_mp = code_mp;
+        this.codeMp = codeMp;
     }
 
-    public Long getIdDentist() {
+    public String getIdDentist() {
         return idDentist;
     }
 
-    public void setIdDentist(Long id_dentist) {
-        this.idDentist = id_dentist;
+    public void setIdDentist(String idDentist) {
+        this.idDentist = idDentist;
     }
 
     public String getName() {
@@ -63,12 +59,12 @@ public class Dentist {
         this.name = name;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getAddress() {
@@ -87,12 +83,12 @@ public class Dentist {
         this.dni = dni;
     }
 
-    public LocalDate getBirth_date() {
-        return birth_date;
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
-    public void setBirth_date(LocalDate birth_date) {
-        this.birth_date = birth_date;
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getPhone() {
@@ -111,12 +107,12 @@ public class Dentist {
         this.email = email;
     }
 
-    public String getCode_mp() {
-        return code_mp;
+    public String getCodeMp() {
+        return codeMp;
     }
 
-    public void setCode_mp(String code_mp) {
-        this.code_mp = code_mp;
+    public void setCodeMp(String codeMp) {
+        this.codeMp = codeMp;
     }
 
     public List<Diary> getDiarys() {

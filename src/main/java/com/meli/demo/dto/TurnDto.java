@@ -1,5 +1,5 @@
 package com.meli.demo.dto;
-import com.meli.demo.entity.Turn;
+import com.meli.demo.domain.Turn;
 
 
 import java.time.LocalDate;
@@ -19,9 +19,9 @@ public class TurnDto {
     public TurnDto(Turn t) {
         this.day = t.getDay();
         this.turnStatus = t.getTurnStatus().getDescription();
-        this.dentist = t.getDiary().getDentist().getName() + " " + t.getDiary().getDentist().getLast_name();
+        /*this.dentist = t.getDiary().getDentist().getName() + " " + t.getDiary().getDentist().getLast_name();
         this.patient = t.getPatient().getName() + " " + t.getPatient().getLast_name();
-        this.reprogramedTurn = classToDto(t.getReprogramedTurn());
+        this.reprogramedTurn = classToDto(t.getReprogramedTurn());*/
     }
 
     public LocalDate getDay() {
