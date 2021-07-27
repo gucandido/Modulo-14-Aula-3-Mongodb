@@ -47,7 +47,6 @@ public class DentistService {
     }
 
     public List<Dentist> getAllByDayHavingTwoMore(LocalDate day){
-        //return repository.findDentistsByTurnsDayHavingTwoMore(day);
         return repository.findAll();
     }
 

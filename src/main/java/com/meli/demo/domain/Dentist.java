@@ -18,6 +18,9 @@ public class Dentist {
 
     private String specialty;
 
+    public Dentist() {
+    }
+
     public Dentist(String idDentist, String name, String lastName, String specialty) {
         this.idDentist = idDentist;
         this.name = name;

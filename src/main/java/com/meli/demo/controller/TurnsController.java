@@ -3,7 +3,6 @@ package com.meli.demo.controller;
 
 import com.meli.demo.domain.Dentist;
 import com.meli.demo.domain.Patient;
-import com.meli.demo.dto.PatientDto;
 import com.meli.demo.dto.TurnDto;
 import com.meli.demo.payload.DeletePayload;
 import com.meli.demo.payload.TurnPayload;
@@ -25,7 +24,11 @@ public class TurnsController {
 
     @Autowired
     private TurnService turnService;
+
+    @Autowired
     private DentistService dentistService;
+
+    @Autowired
     private PatientService patientService;
 
 

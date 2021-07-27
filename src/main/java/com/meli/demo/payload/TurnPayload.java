@@ -1,10 +1,5 @@
 package com.meli.demo.payload;
 
-import com.meli.demo.domain.Dentist;
-import com.meli.demo.domain.Patient;
-import com.meli.demo.domain.Turn;
-import com.meli.demo.enums.Status;
-
 import java.time.LocalDate;
 
 public class TurnPayload {
