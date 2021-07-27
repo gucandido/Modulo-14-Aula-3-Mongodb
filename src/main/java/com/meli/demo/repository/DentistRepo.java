@@ -9,5 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface DentistRepo extends MongoRepository<Dentist, String> {
 
     public Dentist findByIdDentist(String id);
+    public void deleteByIdDentist(String id);
 
 }

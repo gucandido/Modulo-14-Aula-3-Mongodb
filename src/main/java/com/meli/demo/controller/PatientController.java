@@ -33,7 +33,7 @@ public class PatientController {
 
         service.getAll().forEach(x-> list.add(PatientDto.classToDto(x)));
 
-        return new ResponseEntity<>(list, HttpStatus.CREATED);
+        return new ResponseEntity<>(list, HttpStatus.ACCEPTED);
 
     }
 
