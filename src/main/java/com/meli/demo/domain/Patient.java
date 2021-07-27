@@ -21,6 +21,9 @@ public class Patient {
 
     private Gender gender;
 
+    public Patient() {
+    }
+
     public Patient(String idPatient, String name, String lastName, Integer age, Gender gender) {
         this.idPatient = idPatient;
         this.name = name;

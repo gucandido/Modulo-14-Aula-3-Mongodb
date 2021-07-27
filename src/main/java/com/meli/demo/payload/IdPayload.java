@@ -1,10 +1,13 @@
 package com.meli.demo.payload;
 
-public class DeletePayload {
+public class IdPayload {
 
     private String id;
 
-    public DeletePayload(String id) {
+    public IdPayload() {
+    }
+
+    public IdPayload(String id) {
         this.id = id;
     }
 

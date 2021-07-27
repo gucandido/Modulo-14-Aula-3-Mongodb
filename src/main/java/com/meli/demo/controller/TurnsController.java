@@ -4,7 +4,8 @@ package com.meli.demo.controller;
 import com.meli.demo.domain.Dentist;
 import com.meli.demo.domain.Patient;
 import com.meli.demo.dto.TurnDto;
-import com.meli.demo.payload.DeletePayload;
+import com.meli.demo.enums.Status;
+import com.meli.demo.payload.IdPayload;
 import com.meli.demo.payload.TurnPayload;
 import com.meli.demo.service.DentistService;
 import com.meli.demo.service.PatientService;
@@ -33,12 +34,18 @@ public class TurnsController {
 
 
     @PostMapping("")
-    public ResponseEntity<?> createPatient(@RequestBody TurnPayload t){
+    public ResponseEntity<?> createTurn(@RequestBody TurnPayload t){
 
         Dentist d = dentistService.getDentistById(t.getIdDentist());
         Patient p = patientService.getByIdPatient(t.getIdPatient());
 
         return new ResponseEntity<>(turnService.saveTurn(t,d,p), HttpStatus.CREATED);
+    }
+
+    @PostMapping("/cancel")
+    public ResponseEntity<?> cancelTurn(@RequestBody IdPayload p){
+
+        return new ResponseEntity<>(turnService.cancelTurn(p.getId()), HttpStatus.CREATED);
     }
 
     @GetMapping("")
@@ -52,8 +59,30 @@ public class TurnsController {
 
     }
 
+    @GetMapping("/dentist")
+    public ResponseEntity<?> getAllByDentist(@RequestParam(required = true, name = "idDentist") String idDentist){
+
+        List<TurnDto> list = new ArrayList<>();
+
+        turnService.getAllByIdDentist(idDentist).forEach(x-> list.add(TurnDto.classToDto(x)));
+
+        return new ResponseEntity<>(list, HttpStatus.CREATED);
+
+    }
+
+    @GetMapping("/status")
+    public ResponseEntity<?> getAllByStatus(@RequestParam(required = true, name = "status") Status status){
+
+        List<TurnDto> list = new ArrayList<>();
+
+        turnService.getAllByStatus(status).forEach(x-> list.add(TurnDto.classToDto(x)));
+
+        return new ResponseEntity<>(list, HttpStatus.CREATED);
+
+    }
+
     @DeleteMapping("")
-    public ResponseEntity<?> deleteTurn(@RequestBody DeletePayload d){
+    public ResponseEntity<?> deleteTurn(@RequestBody IdPayload d){
         return new ResponseEntity<>(turnService.deleteTurn(d.getId()), HttpStatus.CREATED);
     }
 

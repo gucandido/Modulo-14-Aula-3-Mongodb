@@ -66,4 +66,8 @@ public class Dentist {
     public void setSpecialty(String specialty) {
         this.specialty = specialty;
     }
+
+    public String getId() {
+        return id;
+    }
 }

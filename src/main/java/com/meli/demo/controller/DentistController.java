@@ -1,7 +1,7 @@
 package com.meli.demo.controller;
 
 import com.meli.demo.dto.DentistDto;
-import com.meli.demo.payload.DeletePayload;
+import com.meli.demo.payload.IdPayload;
 import com.meli.demo.payload.DentistPayload;
 import com.meli.demo.service.DentistService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +38,7 @@ public class DentistController {
     }
 
     @DeleteMapping ("")
-    public ResponseEntity<?> deleteDentist(@RequestBody DeletePayload d){
+    public ResponseEntity<?> deleteDentist(@RequestBody IdPayload d){
         return new ResponseEntity<>(service.deleteDentist(d.getId()), HttpStatus.CREATED);
     }
 
