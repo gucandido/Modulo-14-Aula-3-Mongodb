@@ -1,46 +1,35 @@
 package com.meli.demo.domain;
 
-import org.springframework.data.mongodb.core.mapping.DBRef;
+import com.meli.demo.enums.Gender;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.List;
 
 @Document(collection = "patient")
 public class Patient {
 
     @Id
+    private String id;
+
     private String idPatient;
 
     private String name;
 
     private String lastName;
 
-    private String address;
+    private Integer age;
 
-    private String dni;
-
-    private LocalDate birthDate;
-
-    private String phone;
-
-    private String email;
-
-    @DBRef
-    private List<Turn> turns;
+    private Gender gender;
 
     public Patient() {
     }
 
-    public Patient(String name, String lastName, String address, String dni, LocalDate birthDate, String phone, String email) {
+    public Patient(String idPatient, String name, String lastName, Integer age, Gender gender) {
+        this.idPatient = idPatient;
         this.name = name;
         this.lastName = lastName;
-        this.address = address;
-        this.dni = dni;
-        this.birthDate = birthDate;
-        this.phone = phone;
-        this.email = email;
+        this.age = age;
+        this.gender = gender;
     }
 
     public String getIdPatient() {
@@ -67,51 +56,20 @@ public class Patient {
         this.lastName = lastName;
     }
 
-    public String getAddress() {
-        return address;
+    public Integer getAge() {
+        return age;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
-    public String getDni() {
-        return dni;
+    public Gender getGender() {
+        return gender;
     }
 
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public List<Turn> getTurns() {
-        return turns;
-    }
-
-    public void setTurns(List<Turn> turns) {
-        this.turns = turns;
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 }
+

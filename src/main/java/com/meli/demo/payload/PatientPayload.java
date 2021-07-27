@@ -1,9 +1,9 @@
-package com.meli.demo.dto;
+package com.meli.demo.payload;
 
 import com.meli.demo.domain.Patient;
 import com.meli.demo.enums.Gender;
 
-public class PatientDto {
+public class PatientPayload {
 
     private String idPatient;
 
@@ -15,12 +15,12 @@ public class PatientDto {
 
     private Gender gender;
 
-    public PatientDto(Patient p) {
-        this.idPatient = p.getIdPatient();
-        this.name = p.getName();
-        this.lastName = p.getLastName();
-        this.age = p.getAge();
-        this.gender = p.getGender();
+    public PatientPayload(String idPatient, String name, String lastName, Integer age, Gender gender) {
+        this.idPatient = idPatient;
+        this.name = name;
+        this.lastName = lastName;
+        this.age = age;
+        this.gender = gender;
     }
 
     public String getIdPatient() {
@@ -63,7 +63,8 @@ public class PatientDto {
         this.gender = gender;
     }
 
-    public static PatientDto classToDto(Patient p){
-        return p==null?null:new PatientDto(p);
+    public Patient toPatient(){
+        return new Patient(this.idPatient, this.name,this.lastName,this.age, this.gender);
     }
+
 }

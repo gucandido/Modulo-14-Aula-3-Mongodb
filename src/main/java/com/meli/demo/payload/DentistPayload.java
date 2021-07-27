@@ -1,14 +1,8 @@
-package com.meli.demo.domain;
+package com.meli.demo.payload;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import com.meli.demo.domain.Dentist;
 
-
-@Document(collection = "dentist")
-public class Dentist {
-
-    @Id
-    private String id;
+public class DentistPayload {
 
     private String idDentist;
 
@@ -18,22 +12,13 @@ public class Dentist {
 
     private String specialty;
 
-    public Dentist() {
-    }
-
-    public Dentist(String idDentist, String name, String lastName, String specialty) {
+    public DentistPayload(String idDentist, String name, String lastName, String specialty) {
         this.idDentist = idDentist;
         this.name = name;
         this.lastName = lastName;
         this.specialty = specialty;
     }
 
-    public Dentist(Dentist d) {
-        this.idDentist = d.getIdDentist();
-        this.name = d.getName();
-        this.lastName = d.getLastName();
-        this.specialty = d.getSpecialty();
-    }
 
     public String getIdDentist() {
         return idDentist;
@@ -67,7 +52,8 @@ public class Dentist {
         this.specialty = specialty;
     }
 
-    public String getId() {
-        return id;
+    public Dentist toDentist(){
+        return new Dentist(this.idDentist, this.name,this.lastName, this.specialty);
     }
+
 }

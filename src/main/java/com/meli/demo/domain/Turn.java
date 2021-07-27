@@ -1,36 +1,44 @@
 package com.meli.demo.domain;
 
+import com.meli.demo.enums.Status;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 
 @Document(collection = "turn")
 public class Turn {
 
     @Id
-    private String idTurn;
+    private String id;
 
     private LocalDate day;
 
     @DBRef
-    private TurnStatus turnStatus;
+    private Dentist dentist;
+
+    @DBRef
+    private Patient patient;
+
+    private Status status;
 
     public Turn() {
     }
 
-    public Turn(LocalDate day, TurnStatus turnStatus) {
+    public Turn(LocalDate day, Dentist dentist, Patient patient) {
         this.day = day;
-        this.turnStatus = turnStatus;
+        this.dentist = dentist;
+        this.patient = patient;
+        this.status = Status.ATIVO;
     }
 
-    public String getIdTurn() {
-        return idTurn;
+    public String getId() {
+        return id;
     }
 
-    public void setIdTurn(String idTurn) {
-        this.idTurn = idTurn;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public LocalDate getDay() {
@@ -41,11 +49,27 @@ public class Turn {
         this.day = day;
     }
 
-    public TurnStatus getTurnStatus() {
-        return turnStatus;
+    public Dentist getDentist() {
+        return dentist;
     }
 
-    public void setTurnStatus(TurnStatus turnStatus) {
-        this.turnStatus = turnStatus;
+    public void setDentist(Dentist dentist) {
+        this.dentist = dentist;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

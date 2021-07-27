@@ -1,6 +1,7 @@
 package com.meli.demo.service;
 
 import com.meli.demo.domain.Dentist;
+import com.meli.demo.dto.GenericResponseDto;
 import com.meli.demo.repository.DentistRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,12 +19,27 @@ public class DentistService {
         this.repository = repository;
     }
 
-    public void saveDentist(Dentist dentist){
-        repository.save(dentist);
+    public Dentist saveDentist(Dentist dentist){
+
+        Dentist d = repository.findByIdDentist(dentist.getIdDentist());
+
+        if(d==null) { // insert
+            d = new Dentist(dentist);
+        }else{ // update
+            d.setName(dentist.getName());
+            d.setLastName(dentist.getLastName());
+            d.setSpecialty(dentist.getSpecialty());
+        }
+
+        return repository.save(d);
+
     }
 
-    public void deleteDentist(Long id){
+    public GenericResponseDto deleteDentist(String id){
+
         repository.deleteById(id);
+        return new GenericResponseDto("Deletado com sucesso.");
+
     }
 
     public List<Dentist> getAll(){
@@ -31,11 +47,10 @@ public class DentistService {
     }
 
     public List<Dentist> getAllByDayHavingTwoMore(LocalDate day){
-        //return repository.findDentistsByTurnsDayHavingTwoMore(day);
         return repository.findAll();
     }
 
-    public Dentist getDentistById(Long id){
-        return repository.findById(id).orElse(null);
+    public Dentist getDentistById(String id){
+        return repository.findByIdDentist(id);
     }
 }
