@@ -1,8 +1,8 @@
-package com.meli.demo.dto;
+package com.meli.demo.payload;
 
 import com.meli.demo.domain.Dentist;
 
-public class DentistDto {
+public class DentistPayload {
 
     private String idDentist;
 
@@ -12,12 +12,13 @@ public class DentistDto {
 
     private String specialty;
 
-    public DentistDto(Dentist d) {
-        this.idDentist = d.getIdDentist();
-        this.name = d.getName();
-        this.lastName = d.getLastName();
-        this.specialty = d.getSpecialty();
+    public DentistPayload(String idDentist, String name, String lastName, String specialty) {
+        this.idDentist = idDentist;
+        this.name = name;
+        this.lastName = lastName;
+        this.specialty = specialty;
     }
+
 
     public String getIdDentist() {
         return idDentist;
@@ -51,7 +52,8 @@ public class DentistDto {
         this.specialty = specialty;
     }
 
-    public static DentistDto classToDto(Dentist d){
-        return d==null?null: new DentistDto(d);
+    public Dentist toDentist(){
+        return new Dentist(this.idDentist, this.name,this.lastName, this.specialty);
     }
+
 }

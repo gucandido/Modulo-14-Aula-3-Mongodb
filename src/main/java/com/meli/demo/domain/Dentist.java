@@ -1,8 +1,14 @@
-package com.meli.demo.dto;
+package com.meli.demo.domain;
 
-import com.meli.demo.domain.Dentist;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-public class DentistDto {
+
+@Document(collection = "dentist")
+public class Dentist {
+
+    @Id
+    private String id;
 
     private String idDentist;
 
@@ -12,7 +18,17 @@ public class DentistDto {
 
     private String specialty;
 
-    public DentistDto(Dentist d) {
+    public Dentist() {
+    }
+
+    public Dentist(String idDentist, String name, String lastName, String specialty) {
+        this.idDentist = idDentist;
+        this.name = name;
+        this.lastName = lastName;
+        this.specialty = specialty;
+    }
+
+    public Dentist(Dentist d) {
         this.idDentist = d.getIdDentist();
         this.name = d.getName();
         this.lastName = d.getLastName();
@@ -51,7 +67,7 @@ public class DentistDto {
         this.specialty = specialty;
     }
 
-    public static DentistDto classToDto(Dentist d){
-        return d==null?null: new DentistDto(d);
+    public String getId() {
+        return id;
     }
 }
