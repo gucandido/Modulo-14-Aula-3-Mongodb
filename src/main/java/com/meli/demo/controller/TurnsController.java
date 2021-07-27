@@ -55,7 +55,7 @@ public class TurnsController {
 
         turnService.getAll().forEach(x-> list.add(TurnDto.classToDto(x)));
 
-        return new ResponseEntity<>(list, HttpStatus.CREATED);
+        return new ResponseEntity<>(list, HttpStatus.ACCEPTED);
 
     }
 
@@ -66,7 +66,7 @@ public class TurnsController {
 
         turnService.getAllByIdDentist(idDentist).forEach(x-> list.add(TurnDto.classToDto(x)));
 
-        return new ResponseEntity<>(list, HttpStatus.CREATED);
+        return new ResponseEntity<>(list, HttpStatus.ACCEPTED);
 
     }
 
@@ -77,7 +77,7 @@ public class TurnsController {
 
         turnService.getAllByStatus(status).forEach(x-> list.add(TurnDto.classToDto(x)));
 
-        return new ResponseEntity<>(list, HttpStatus.CREATED);
+        return new ResponseEntity<>(list, HttpStatus.ACCEPTED);
 
     }
 

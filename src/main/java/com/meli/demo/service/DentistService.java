@@ -37,7 +37,7 @@ public class DentistService {
 
     public GenericResponseDto deleteDentist(String id){
 
-        repository.deleteById(id);
+        repository.deleteByIdDentist(id);
         return new GenericResponseDto("Deletado com sucesso.");
 
     }
@@ -46,9 +46,6 @@ public class DentistService {
         return repository.findAll();
     }
 
-    public List<Dentist> getAllByDayHavingTwoMore(LocalDate day){
-        return repository.findAll();
-    }
 
     public Dentist getDentistById(String id){
         return repository.findByIdDentist(id);

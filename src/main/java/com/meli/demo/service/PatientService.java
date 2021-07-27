@@ -23,7 +23,7 @@ public class PatientService {
     }
 
     public GenericResponseDto deletePatient(String id){
-        repository.deleteById(id);
+        repository.deleteByIdPatient(id);
         return new GenericResponseDto("Deletado com sucesso.");
     }
 

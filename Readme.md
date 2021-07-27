@@ -1,104 +1,54 @@
-# Modulo 14 - Aula 3 - consultorio
+# Modulo 14 - Aula 3 - consultorio mongo db
 
-### Repositório da solução do exercicio da aula 3
+### Endpoints para dentistas
 
-A fim de facillitar a execução da aplicação do exercicio tomei a liberdade de criar apenas um endpoint aonde a base de dados é inicializada com os dados necessarios e prontos:
+#### 1. Cadastrar dentista
+<p><code>Method: POST</code><br><code>Sign: http://localhost:8080/dentist</code></p>
+<pre>
+<code><span style="font-size: medium">Body:</span></code>
 
+    {
+        "idDentist":"DT0001",
+        "name":"Francisco",
+        "lastName":"Tiradentes",
+        "specialty":"Tirar dentes"
+    }
 
-#### Inicialização do banco de dados
-
-<p><code>Method: POST</code><br><code>Sign: http://localhost:8080/post</code></p>
+</pre>
 <pre>
 <code><span style="font-size: medium">Response (Status: 201 - Created):</span></code>
 
-    ok
+    {
+        "idDentist":"DT0001",
+        "name":"Francisco",
+        "lastName":"Tiradentes",
+        "specialty":"Tirar dentes"
+    }
 
 </pre>
+<pre>
+<table>
+<tr><th colspan="3">Parâmetros</th></tr>
+<tr style="text-align: left"><th>Parâmetro</th><th>Tipo</th><th>Descrição/Exemplo</th></tr>
+<tr style="text-align: left"><td>idDentist</td><td>String</td><td>Identificador do dentista para uso do usuário</td></tr>
+<tr style="text-align: left"><td>name</td><td>String</td><td>Nome</td></tr>
+<tr style="text-align: left"><td>lastName</td><td>String</td><td>Sobrenome</td></tr>
+<tr style="text-align: left"><td>specialty</td><td>String</td><td>Especialidade</td></tr>
+</table>
+</pre>
 
-#### Ex 1. Listar todos os pacientes atendidos, em um dia, por todos os dentistas.
+#### 2. Listar todos os dentistas
 
-<p><code>Method: GET</code><br><code>Sign: http://localhost:8080/patients?date=YYYY-MM-DD</code></p>
+<p><code>Method: GET</code><br><code>Sign: http://localhost:8080/dentist</code></p>
 <pre>
 <code><span style="font-size: medium">Response (Status: 202 - Accepted):</span></code>
 
     [
         {
-            "name": "Joao",
-            "last_name": "Ghordo",
-            "address": "Pirapitingui - SP",
-            "dni": "oshee",
-            "birth_date": "1994-08-05",
-            "phone": "+551598857431",
-            "email": "jao.gordasso@gmail.com",
-            "turns": [
-                {
-                    "day": "2021-08-10",
-                    "dentist": "Francisco Tiradentes",
-                    "patient": "Joao Ghordo",
-                    "turnStatus": "Pendente",
-                    "reprogramedTurn": null
-                },
-                {
-                    "day": "2021-08-24",
-                    "dentist": "Francisco Tiradentes",
-                    "patient": "Joao Ghordo",
-                    "turnStatus": "Pendente",
-                    "reprogramedTurn": null
-                },
-                {
-                    "day": "2021-06-22",
-                    "dentist": "Francisco Tiradentes",
-                    "patient": "Joao Ghordo",
-                    "turnStatus": "Concluído",
-                    "reprogramedTurn": null
-                },
-                {
-                    "day": "2021-07-24",
-                    "dentist": "Francisco Tiradentes",
-                    "patient": "Joao Ghordo",
-                    "turnStatus": "Pendente",
-                    "reprogramedTurn": null
-                }
-            ]
-        },
-        {
-            "name": "Giulia",
-            "last_name": "Franco",
-            "address": "Rio Branco - AC",
-            "dni": "oshee",
-            "birth_date": "1992-07-14",
-            "phone": "+55739857431",
-            "email": "giu_diva@terra.com",
-            "turns": [
-                {
-                    "day": "2021-09-24",
-                    "dentist": "Celso Rodriguez",
-                    "patient": "Giulia Franco",
-                    "turnStatus": "Pendente",
-                    "reprogramedTurn": null
-                },
-                {
-                    "day": "2021-08-24",
-                    "dentist": "Celso Rodriguez",
-                    "patient": "Giulia Franco",
-                    "turnStatus": "Pendente",
-                    "reprogramedTurn": null
-                },
-                {
-                    "day": "2021-07-22",
-                    "dentist": "Celso Rodriguez",
-                    "patient": "Giulia Franco",
-                    "turnStatus": "Concluído",
-                    "reprogramedTurn": null
-                },
-                {
-                    "day": "2021-07-24",
-                    "dentist": "Celso Rodriguez",
-                    "patient": "Giulia Franco",
-                    "turnStatus": "Pendente",
-                    "reprogramedTurn": null
-                }
-            ]
+            "idDentist": "DT0001",
+            "name": "Francisco",
+            "lastName": "Tiradentes",
+            "specialty": "Tirar dentes"
         }
     ]
 
@@ -107,90 +57,86 @@ A fim de facillitar a execução da aplicação do exercicio tomei a liberdade d
 <table>
 <tr><th colspan="3">Parâmetros</th></tr>
 <tr style="text-align: left"><th>Parâmetro</th><th>Tipo</th><th>Descrição/Exemplo</th></tr>
-<tr style="text-align: left"><td>date (Endpoint)</td><td>String</td><td>Data desejada para a consulta no formato YYYY-MM-DD (no exemplo acima foi usado o dia 2021-07-24)</td></tr>
+<tr style="text-align: left"><td>idDentist</td><td>String</td><td>Identificador do dentista para uso do usuário</td></tr>
+<tr style="text-align: left"><td>name</td><td>String</td><td>Nome</td></tr>
+<tr style="text-align: left"><td>lastName</td><td>String</td><td>Sobrenome</td></tr>
+<tr style="text-align: left"><td>specialty</td><td>String</td><td>Especialidade</td></tr>
 </table>
 </pre>
 
-#### Ex 2. Listar todos os dentistas que tenham mais de dois turnos em uma data
+#### 3. Apagar dentista
 
-<p><code>Method: GET</code><br><code>Sign: http://localhost:8080/dentist/day</code></p>
+<p><code>Method: DELETE</code><br><code>Sign: http://localhost:8080/dentist</code></p>
+<pre>
+<code><span style="font-size: medium">Body:</span></code>
+
+    {
+        "id":"DT0001"
+    }
+
+</pre>
+<pre>
+<code><span style="font-size: medium">Response (Status: 201 - Created):</span></code>
+
+    {
+        "message": "Deletado com sucesso."
+    }
+
+</pre>
+
+### Endpoints para pacientes
+
+#### 1. Cadastrar paciente
+<p><code>Method: POST</code><br><code>Sign: http://localhost:8080/patient</code></p>
+<pre>
+<code><span style="font-size: medium">Body:</span></code>
+
+    {
+        "idPatient":"PT0001",
+        "name":"João",
+        "lastName":"Ghordo",
+        "age":45,
+        "gender":"MALE"
+    }
+
+</pre>
+<pre>
+<code><span style="font-size: medium">Response (Status: 201 - Created):</span></code>
+
+    {
+        "idPatient":"PT0001",
+        "name":"João",
+        "lastName":"Ghordo",
+        "age":45,
+        "gender":"MALE"
+    }
+
+</pre>
+<pre>
+<table>
+<tr><th colspan="3">Parâmetros</th></tr>
+<tr style="text-align: left"><th>Parâmetro</th><th>Tipo</th><th>Descrição/Exemplo</th></tr>
+<tr style="text-align: left"><td>idPatient</td><td>String</td><td>Identificador do paciente para uso do usuário</td></tr>
+<tr style="text-align: left"><td>name</td><td>String</td><td>Nome</td></tr>
+<tr style="text-align: left"><td>lastName</td><td>String</td><td>Sobrenome</td></tr>
+<tr style="text-align: left"><td>age</td><td>int</td><td>Idade</td></tr>
+<tr style="text-align: left"><td>gender</td><td>String</td><td>Gênero</td></tr>
+</table>
+</pre>
+
+#### 2. Listar todos os pacientes
+
+<p><code>Method: GET</code><br><code>Sign: http://localhost:8080/patient</code></p>
 <pre>
 <code><span style="font-size: medium">Response (Status: 202 - Accepted):</span></code>
 
     [
         {
-            "name": "Celso",
-            "last_name": "Rodriguez",
-            "address": "São Caetano do Sul",
-            "dni": "oshee",
-            "birth_date": "1992-08-05",
-            "phone": "+551696887421",
-            "email": "celso.coringao@hotmail.com",
-            "code_mp": "B123456b",
-            "diarys": [
-                {
-                "start_time": "2021-07-24T16:30:00",
-                "ending_time": "2021-07-24T17:00:00",
-                "turns": [
-                        {
-                            "day": "2021-09-01",
-                            "dentist": "Celso Rodriguez",
-                            "patient": "Felipe Farias",
-                            "turnStatus": "Pendente",
-                            "reprogramedTurn": null
-                        },
-                        {
-                            "day": "2021-03-22",
-                            "dentist": "Celso Rodriguez",
-                            "patient": "Felipe Farias",
-                            "turnStatus": "Concluído",
-                            "reprogramedTurn": null
-                        },
-                        {
-                            "day": "2021-04-10",
-                            "dentist": "Celso Rodriguez",
-                            "patient": "Felipe Farias",
-                            "turnStatus": "Concluído",
-                            "reprogramedTurn": null
-                        },
-                        {
-                            "day": "2021-07-24",
-                            "dentist": "Celso Rodriguez",
-                            "patient": "Felipe Farias",
-                            "turnStatus": "Pendente",
-                            "reprogramedTurn": null
-                        },
-                        {
-                            "day": "2021-07-24",
-                            "dentist": "Celso Rodriguez",
-                            "patient": "Giulia Franco",
-                            "turnStatus": "Pendente",
-                            "reprogramedTurn": null
-                        },
-                        {
-                            "day": "2021-07-24",
-                            "dentist": "Celso Rodriguez",
-                            "patient": "Giulia Franco",
-                            "turnStatus": "Concluído",
-                            "reprogramedTurn": null
-                        },
-                        {
-                            "day": "2021-08-24",
-                            "dentist": "Celso Rodriguez",
-                            "patient": "Giulia Franco",
-                            "turnStatus": "Pendente",
-                            "reprogramedTurn": null
-                        },
-                        {
-                            "day": "2021-09-24",
-                            "dentist": "Celso Rodriguez",
-                            "patient": "Giulia Franco",
-                            "turnStatus": "Pendente",
-                            "reprogramedTurn": null
-                        }
-                    ]
-                }
-            ]
+            "idPatient": "PT0001",
+            "name": "João",
+            "lastName": "Ghordo",
+            "age": 45,
+            "gender": "MALE"
         }
     ]
 
@@ -199,237 +145,305 @@ A fim de facillitar a execução da aplicação do exercicio tomei a liberdade d
 <table>
 <tr><th colspan="3">Parâmetros</th></tr>
 <tr style="text-align: left"><th>Parâmetro</th><th>Tipo</th><th>Descrição/Exemplo</th></tr>
-<tr style="text-align: left"><td>date (Endpoint)</td><td>String</td><td>Data desejada para a consulta no formato YYYY-MM-DD (no exemplo acima foi usado o dia 2021-07-24)</td></tr>
+<tr style="text-align: left"><td>idPatient</td><td>String</td><td>Identificador do paciente para uso do usuário</td></tr>
+<tr style="text-align: left"><td>name</td><td>String</td><td>Nome</td></tr>
+<tr style="text-align: left"><td>lastName</td><td>String</td><td>Sobrenome</td></tr>
+<tr style="text-align: left"><td>age</td><td>int</td><td>Idade</td></tr>
+<tr style="text-align: left"><td>gender</td><td>String</td><td>Gênero</td></tr>
 </table>
 </pre>
 
-#### Ex 3. Listar todos os turnos com status finalizado
-<p><code>Method: GET</code><br><code>Sign: http://localhost:8080/turns/finalized</code></p>
-<pre>
-<code><span style="font-size: medium">Response (Status: 202 - Accepted):</span></code>
+#### 3. Apagar paciente
 
-    [
-        {
-            "day": "2021-06-22",
-            "dentist": "Francisco Tiradentes",
-            "patient": "Joao Ghordo",
-            "turnStatus": "Concluído",
-            "reprogramedTurn": null
-        },
-        {
-            "day": "2021-03-22",
-            "dentist": "Celso Rodriguez",
-            "patient": "Felipe Farias",
-            "turnStatus": "Concluído",
-            "reprogramedTurn": null
-        },
-        {
-            "day": "2021-04-10",
-            "dentist": "Celso Rodriguez",
-            "patient": "Felipe Farias",
-            "turnStatus": "Concluído",
-            "reprogramedTurn": null
-        },
-        {
-            "day": "2021-01-10",
-            "dentist": "Francisco Tiradentes",
-            "patient": "Beatriz Knusty",
-            "turnStatus": "Concluído",
-            "reprogramedTurn": null
-        },
-        {
-            "day": "2021-02-05",
-            "dentist": "Francisco Tiradentes",
-            "patient": "Beatriz Knusty",
-            "turnStatus": "Concluído",
-            "reprogramedTurn": null
-        },
-        {
-            "day": "2021-05-02",
-            "dentist": "Francisco Tiradentes",
-            "patient": "Beatriz Knusty",
-            "turnStatus": "Concluído",
-            "reprogramedTurn": null
-        },
-        {
-            "day": "2021-07-15",
-            "dentist": "Francisco Tiradentes",
-            "patient": "Beatriz Knusty",
-            "turnStatus": "Concluído",
-            "reprogramedTurn": null
-        },
-        {
-            "day": "2021-07-24",
-            "dentist": "Celso Rodriguez",
-            "patient": "Giulia Franco",
-            "turnStatus": "Concluído",
-            "reprogramedTurn": null
-        }
-    ]
+<p><code>Method: DELETE</code><br><code>Sign: http://localhost:8080/patient</code></p>
+<pre>
+<code><span style="font-size: medium">Body:</span></code>
+
+    {
+        "id":"PT0001"
+    }
 
 </pre>
-
-#### Ex 4. Listar todos os turnos com estado pendente de um dia
-
-<p><code>Method: GET</code><br><code>Sign: http://localhost:8080/turns/pendent</code></p>
-<pre>
-<code><span style="font-size: medium">Response (Status: 202 - Accepted):</span></code>
-
-    [
-        {
-            "day": "2021-07-24",
-            "dentist": "Francisco Tiradentes",
-            "patient": "Joao Ghordo",
-            "turnStatus": "Pendente",
-            "reprogramedTurn": null
-        },
-        {
-            "day": "2021-07-24",
-            "dentist": "Celso Rodriguez",
-            "patient": "Felipe Farias",
-            "turnStatus": "Pendente",
-            "reprogramedTurn": null
-        },
-        {
-            "day": "2021-07-24",
-            "dentist": "Celso Rodriguez",
-            "patient": "Giulia Franco",
-            "turnStatus": "Pendente",
-            "reprogramedTurn": null
-        }
-    ]
-
-</pre>
-
-#### Ex 5. Listar a agenda de um dentista
-
-<p><code>Method: GET</code><br><code>Sign: http://localhost:8080/post</code></p>
-<pre>
-<code><span style="font-size: medium">Response (Status: 202 - Accepted):</span></code>
-
-    [
-        {
-            "start_time": "2021-07-24T15:30:00",
-            "ending_time": "2021-07-24T16:00:00",
-            "turns": [
-                {
-                    "day": "2021-07-24",
-                    "dentist": "Francisco Tiradentes",
-                    "patient": "Joao Ghordo",
-                    "turnStatus": "Pendente",
-                    "reprogramedTurn": null
-                },
-                {
-                    "day": "2021-06-22",
-                    "dentist": "Francisco Tiradentes",
-                    "patient": "Joao Ghordo",
-                    "turnStatus": "Concluído",
-                    "reprogramedTurn": null
-                },
-                {
-                    "day": "2021-08-24",
-                    "dentist": "Francisco Tiradentes",
-                    "patient": "Joao Ghordo",
-                    "turnStatus": "Pendente",
-                    "reprogramedTurn": null
-                },
-                {
-                    "day": "2021-08-10",
-                    "dentist": "Francisco Tiradentes",
-                    "patient": "Joao Ghordo",
-                    "turnStatus": "Pendente",
-                    "reprogramedTurn": null
-                },
-                {
-                    "day": "2021-01-10",
-                    "dentist": "Francisco Tiradentes",
-                    "patient": "Beatriz Knusty",
-                    "turnStatus": "Concluído",
-                    "reprogramedTurn": null
-                },
-                {
-                    "day": "2021-02-05",
-                    "dentist": "Francisco Tiradentes",
-                    "patient": "Beatriz Knusty",
-                    "turnStatus": "Concluído",
-                    "reprogramedTurn": null
-                },
-                {
-                    "day": "2021-05-02",
-                    "dentist": "Francisco Tiradentes",
-                    "patient": "Beatriz Knusty",
-                    "turnStatus": "Concluído",
-                    "reprogramedTurn": null
-                },
-                {
-                    "day": "2021-07-15",
-                    "dentist": "Francisco Tiradentes",
-                    "patient": "Beatriz Knusty",
-                    "turnStatus": "Concluído",
-                    "reprogramedTurn": null
-                }
-            ]
-        }
-    ]
-
-</pre>
-
-#### Ex 6. Listar todos os turnos que foram remarcados de um dentista
-
-Para listar os reprogramados, antes é necessario reprogramar uma consulta, para isto foi disponibliizado o endpoint a seguir:
-
-<p><code>Method: POST</code><br><code>Sign: http://localhost:8080/turns/reprogram/{idPatient}/{idTurn}</code><br><code>Exemplo: http://localhost:8080/turns/reprogram/4/16</code></p>
 <pre>
 <code><span style="font-size: medium">Response (Status: 201 - Created):</span></code>
 
-    ok
+    {
+        "message": "Deletado com sucesso."
+    }
 
 </pre>
 
-Então para consulta do exercício utilizamos o endpoint a seguir:
+### Endpoints para consultas
 
-<p><code>Method: GET</code><br><code>Sign: http://localhost:8080/turns/reprogrammed/{idDentist}</code><br><code>Exemplo: http://localhost:8080/turns/reprogrammed/2</code></p>
+#### 1. Cadastrar consulta
+<p><code>Method: POST</code><br><code>Sign: http://localhost:8080/turn</code></p>
+<pre>
+<code><span style="font-size: medium">Body:</span></code>
+
+    {
+        "idDentist":"DT0001",
+        "idPatient":"PT0001",
+        "day":"2021-08-28"
+    }
+
+</pre>
+<pre>
+<code><span style="font-size: medium">Response (Status: 201 - Created):</span></code>
+
+    {
+        "id": "61001ba0f872f808e1ec6fb0",
+        "day": "2021-08-28",
+        "dentist": {
+            "id": "61001a167b922d59e65ed1e2",
+            "idDentist": "DT0001",
+            "name": "Francisco",
+            "lastName": "Tiradentes",
+            "specialty": "Tirar dentes"
+        },
+        "patient": {
+            "idPatient": "PT0001",
+            "name": "João",
+            "lastName": "Ghordo",
+            "age": 45,
+            "gender": "MALE"
+        },
+        "status": "ATIVO"
+    }
+
+</pre>
+<pre>
+<table>
+<tr><th colspan="3">Parâmetros</th></tr>
+<tr style="text-align: left"><th>Parâmetro</th><th>Tipo</th><th>Descrição/Exemplo</th></tr>
+<tr style="text-align: left"><td>id</td><td>String</td><td>Identificador único da consulta</td></tr>
+<tr style="text-align: left"><td>day</td><td>String</td><td>Data da consulta</td></tr>
+<tr style="text-align: left"><td>dentist</td><td>Object</td><td>Dentista da consulta</td></tr>
+<tr style="text-align: left"><td>patient</td><td>Object</td><td>Paciente da consulta</td></tr>
+<tr style="text-align: left"><td>status</td><td>String</td><td>Estado da consulta</td></tr>
+</table>
+</pre>
+
+#### 2. Listar todas as consultas - Ex.1 Consultar todos os turnos.
+
+<p><code>Method: GET</code><br><code>Sign: http://localhost:8080/turn</code></p>
 <pre>
 <code><span style="font-size: medium">Response (Status: 202 - Accepted):</span></code>
 
     [
         {
-            "day": "2021-07-27",
-            "dentist": "Celso Rodriguez",
-            "patient": "Giulia Franco",
-            "turnStatus": "Pendente",
-            "reprogramedTurn": {
-                "day": "2021-09-24",
-                "dentist": "Celso Rodriguez",
-                "patient": "Giulia Franco",
-                "turnStatus": "Cancelado",
-                "reprogramedTurn": null
-            }
+            "idTurn": "61001b78f872f808e1ec6faf",
+            "day": "2021-07-28",
+            "dentist": {
+                "idDentist": "DT0001",
+                "name": "Francisco",
+                "lastName": "Tiradentes",
+                "specialty": "Tirar dentes"
+            },
+            "patient": {
+                "idPatient": "PT0001",
+                "name": "João",
+                "lastName": "Ghordo",
+                "age": 45,
+                "gender": "MALE"
+            },
+            "status": "ATIVO"
+        },
+        {
+            "idTurn": "61001ba0f872f808e1ec6fb0",
+            "day": "2021-08-28",
+            "dentist": {
+                "idDentist": "DT0001",
+                "name": "Francisco",
+                "lastName": "Tiradentes",
+                "specialty": "Tirar dentes"
+            },
+            "patient": {
+                "idPatient": "PT0001",
+                "name": "João",
+                "lastName": "Ghordo",
+                "age": 45,
+                "gender": "MALE"
+            },
+            "status": "ATIVO"
         }
     ]
 
 </pre>
+<pre>
+<table>
+<tr><th colspan="3">Parâmetros</th></tr>
+<tr style="text-align: left"><th>Parâmetro</th><th>Tipo</th><th>Descrição/Exemplo</th></tr>
+<tr style="text-align: left"><td>id</td><td>String</td><td>Identificador único da consulta</td></tr>
+<tr style="text-align: left"><td>day</td><td>String</td><td>Data da consulta</td></tr>
+<tr style="text-align: left"><td>dentist</td><td>Object</td><td>Dentista da consulta</td></tr>
+<tr style="text-align: left"><td>patient</td><td>Object</td><td>Paciente da consulta</td></tr>
+<tr style="text-align: left"><td>status</td><td>String</td><td>Estado da consulta</td></tr>
+</table>
+</pre>
 
-#### Ex 7. Listar todos os turnos que foram remarcados. (extra)
+#### 3. Apagar consulta
 
-<p><code>Method: GET</code><br><code>Sign: http://localhost:8080/turns/reprogrammed</code></p>
+<p><code>Method: DELETE</code><br><code>Sign: http://localhost:8080/turn</code></p>
+<pre>
+<code><span style="font-size: medium">Body:</span></code>
+
+    {
+        "id":"61001b78f872f808e1ec6faf"
+    }
+
+</pre>
+<pre>
+<code><span style="font-size: medium">Response (Status: 201 - Created):</span></code>
+
+    {
+        "message": "Deletado com sucesso."
+    }
+
+</pre>
+
+#### 4. Cancelar uma consulta
+
+<p><code>Method: POST</code><br><code>Sign: http://localhost:8080/turn/cancel</code></p>
+<pre>
+<code><span style="font-size: medium">Body:</span></code>
+
+    {
+        "id":"61001ba0f872f808e1ec6fb0"
+    }
+
+</pre>
+<pre>
+<code><span style="font-size: medium">Response (Status: 201 - Created):</span></code>
+
+    {
+        "id": "61001ba0f872f808e1ec6fb0",
+        "day": "2021-08-28",
+        "dentist": {
+                "id": "61001a167b922d59e65ed1e2",
+                "idDentist": "DT0001",
+                "name": "Francisco",
+                "lastName": "Tiradentes",
+                "specialty": "Tirar dentes"
+            },
+        "patient": {
+                "idPatient": "PT0001",
+                "name": "João",
+                "lastName": "Ghordo",
+                "age": 45,
+                "gender": "MALE"
+            },
+        "status": "CANCELADO"
+    }
+
+</pre>
+<pre>
+<table>
+<tr><th colspan="3">Parâmetros</th></tr>
+<tr style="text-align: left"><th>Parâmetro</th><th>Tipo</th><th>Descrição/Exemplo</th></tr>
+<tr style="text-align: left"><td>id</td><td>String</td><td>Identificador único da consulta</td></tr>
+<tr style="text-align: left"><td>day</td><td>String</td><td>Data da consulta</td></tr>
+<tr style="text-align: left"><td>dentist</td><td>Object</td><td>Dentista da consulta</td></tr>
+<tr style="text-align: left"><td>patient</td><td>Object</td><td>Paciente da consulta</td></tr>
+<tr style="text-align: left"><td>status</td><td>String</td><td>Estado da consulta</td></tr>
+</table>
+</pre>
+
+#### 5. Listar todas as consultas de um dentista - Ex. 2 Consultar as consultas com o dentista. 
+
+<p><code>Method: GET</code><br><code>Sign: http://localhost:8080/turn/dentist?idDentist={idDentist}</code></p>
 <pre>
 <code><span style="font-size: medium">Response (Status: 202 - Accepted):</span></code>
 
     [
         {
-            "day": "2021-07-27",
-            "dentist": "Celso Rodriguez",
-            "patient": "Giulia Franco",
-            "turnStatus": "Pendente",
-            "reprogramedTurn": {
-                "day": "2021-09-24",
-                "dentist": "Celso Rodriguez",
-                "patient": "Giulia Franco",
-                "turnStatus": "Cancelado",
-                "reprogramedTurn": null
-            }
+            "idTurn": "61001b78f872f808e1ec6faf",
+            "day": "2021-07-28",
+            "dentist": {
+                "idDentist": "DT0001",
+                "name": "Francisco",
+                "lastName": "Tiradentes",
+                "specialty": "Tirar dentes"
+            },
+            "patient": {
+                "idPatient": "PT0001",
+                "name": "João",
+                "lastName": "Ghordo",
+                "age": 45,
+                "gender": "MALE"
+            },
+            "status": "ATIVO"
+        },
+        {
+            "idTurn": "61001ba0f872f808e1ec6fb0",
+            "day": "2021-08-28",
+            "dentist": {
+                "idDentist": "DT0001",
+                "name": "Francisco",
+                "lastName": "Tiradentes",
+                "specialty": "Tirar dentes"
+            },
+            "patient": {
+                "idPatient": "PT0001",
+                "name": "João",
+                "lastName": "Ghordo",
+                "age": 45,
+                "gender": "MALE"
+            },
+            "status": "CANCELADO"
         }
     ]
 
+</pre>
+<pre>
+<table>
+<tr><th colspan="3">Parâmetros</th></tr>
+<tr style="text-align: left"><th>Parâmetro</th><th>Tipo</th><th>Descrição/Exemplo</th></tr>
+<tr style="text-align: left"><td>idDentist</td><td>String</td><td>Identificador do dentista para uso do usuário (no exemplo acima foi utilizado a chave "DT0001")</td></tr>
+<tr style="text-align: left"><td>id</td><td>String</td><td>Identificador único da consulta</td></tr>
+<tr style="text-align: left"><td>day</td><td>String</td><td>Data da consulta</td></tr>
+<tr style="text-align: left"><td>dentist</td><td>Object</td><td>Dentista da consulta</td></tr>
+<tr style="text-align: left"><td>patient</td><td>Object</td><td>Paciente da consulta</td></tr>
+<tr style="text-align: left"><td>status</td><td>String</td><td>Estado da consulta</td></tr>
+</table>
+</pre>
+
+#### 6. Listar todas as consultas pelo estado - Ex. 3 Consultar os turnos por estado
+
+<p><code>Method: GET</code><br><code>Sign: http://localhost:8080/turn/status?status={status}</code></p>
+<pre>
+<code><span style="font-size: medium">Response (Status: 202 - Accepted):</span></code>
+
+    [
+        {
+            "idTurn": "61001ba0f872f808e1ec6fb0",
+            "day": "2021-08-28",
+            "dentist": {
+                "idDentist": "DT0001",
+                "name": "Francisco",
+                "lastName": "Tiradentes",
+                "specialty": "Tirar dentes"
+            },
+            "patient": {
+                "idPatient": "PT0001",
+                "name": "João",
+                "lastName": "Ghordo",
+                "age": 45,
+                "gender": "MALE"
+            },
+            "status": "CANCELADO"
+        }
+    ]
+
+</pre>
+<pre>
+<table>
+<tr><th colspan="3">Parâmetros</th></tr>
+<tr style="text-align: left"><th>Parâmetro</th><th>Tipo</th><th>Descrição/Exemplo</th></tr>
+<tr style="text-align: left"><td>status</td><td>String</td><td>Identificador de estado da consulta (no exemplo acima foi utilizado o estado "CANCELADO")</td></tr>
+<tr style="text-align: left"><td>id</td><td>String</td><td>Identificador único da consulta</td></tr>
+<tr style="text-align: left"><td>day</td><td>String</td><td>Data da consulta</td></tr>
+<tr style="text-align: left"><td>dentist</td><td>Object</td><td>Dentista da consulta</td></tr>
+<tr style="text-align: left"><td>patient</td><td>Object</td><td>Paciente da consulta</td></tr>
+<tr style="text-align: left"><td>status</td><td>String</td><td>Estado da consulta</td></tr>
+</table>
 </pre>
